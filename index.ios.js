@@ -10,11 +10,8 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  TouchableHighlight,
   Text,
   Button,
-  Image,
-  Alert,
   View
 } from 'react-native';
 
@@ -25,30 +22,23 @@ import Icone from './src/components/icone';
 //import FontAwesome, { Icons } from 'react-native-fontawesome';
 
 
-
 class PPT extends Component {
 
+constructor(props) {
+  super(props);
 
-  constructor(props) {
-
-    super(props);
-
-    var texto1 = 'Qualquer coisa';
-
-    this.state = { 
-
-      escolhaUsuario : '', 
-      escolhaComputador : '',
-      resultado : '', 
-      placarUsuario : 0, 
-      placarComputador : 0 
+    this.state = {
+      escolhaUsuario: '', 
+      escolhaComputador: '',
+      resultado: '', 
+      placarUsuario: 0, 
+      placarComputador: 0 
 
       };    
   }
 
-  resetar(){
-
-    this.setState({
+resetar() {
+this.setState({
 
     escolhaUsuario: '', 
     escolhaComputador: '',
@@ -57,24 +47,17 @@ class PPT extends Component {
     placarComputador: 0
 
     });
-
   }
 
   jokenpo(escolhaUsuario) {
-
-    var placarComputador = this.state.placarComputador;
-
-    var placarUsuario = this.state.placarUsuario;
-
-    var number = Math.random();
-
-    var resultado = '';
-
-    var escolhaComputador = '';
-
+    let placarComputador = this.state.placarComputador;
+    let placarUsuario = this.state.placarUsuario;
+    let number = Math.random();
+    let resultado = '';
+    let escolhaComputador = '';
     number = Math.floor(number * 3);
 
-    switch(number){
+    switch (number) {
 
     case 0:
         escolhaComputador = 'pedra';
@@ -90,94 +73,52 @@ class PPT extends Component {
         escolhaComputador = '';
     }
 
-   if(escolhaComputador == escolhaUsuario){
-
+ if (escolhaComputador === escolhaUsuario) {
     resultado = 'Empate';
-
-   }else if (escolhaComputador == 'pedra' && escolhaUsuario == 'tesoura'){
-
+  } else if (escolhaComputador === 'pedra' && escolhaUsuario === 'tesoura') { 
     resultado = 'Você Perdeu';
-
-    placarUsuario = placarUsuario;
-
-    placarComputador = placarComputador + 1;
-
-  }else if (escolhaComputador == 'tesoura' && escolhaUsuario == 'papel'){
-
+    placarComputador += 1;
+  } else if (escolhaComputador === 'tesoura' && escolhaUsuario === 'papel') {
     resultado = 'Você Perdeu';
-
-    placarUsuario = placarUsuario;
-
-    placarComputador = placarComputador + 1;
- 
-  }else if (escolhaComputador == 'papel' && escolhaUsuario == 'pedra'){
-
+    placarComputador += 1;
+  } else if (escolhaComputador === 'papel' && escolhaUsuario === 'pedra') {
     resultado = 'Você Perdeu';
-
-    placarUsuario = placarUsuario;
-
-    placarComputador = placarComputador + 1;
-
-  }else if (escolhaComputador == 'tesoura' && escolhaUsuario == 'pedra'){
-
+    placarComputador += 1;
+  } else if (escolhaComputador === 'tesoura' && escolhaUsuario === 'pedra') {
     resultado = 'Você Ganhou';
-
-    placarComputador = placarComputador;
-
-    placarUsuario = placarUsuario + 1;
-
- }else if (escolhaComputador == 'papel' && escolhaUsuario == 'tesoura'){
-
+    placarUsuario += 1;
+ } else if (escolhaComputador === 'papel' && escolhaUsuario === 'tesoura') {
     resultado = 'Você Ganhou';
-
-    placarComputador = placarComputador;
-
-    placarUsuario = placarUsuario + 1;
-
- }else if (escolhaComputador == 'pedra' && escolhaUsuario == 'papel'){
-
+    placarUsuario += 1;
+ } else if (escolhaComputador === 'pedra' && escolhaUsuario === 'papel') {
     resultado = 'Você Ganhou';
-
-    placarUsuario = placarUsuario + 1;
-
-    placarComputador = placarComputador;
-
+    placarUsuario += 1;
  } 
-
-    
-
     this.setState({
 
-    escolhaUsuario: escolhaUsuario, 
-    escolhaComputador: escolhaComputador,
-    resultado: resultado, 
-    placarUsuario: placarUsuario,
-    placarComputador: placarComputador
+      escolhaUsuario, 
+      escolhaComputador,
+      resultado, 
+      placarUsuario,
+      placarComputador
 
-    });
-
-    
-
+    });   
   }
 
-
-
   render() {
-
     return (
 
       <View>
 
-      <Topo></Topo>
+      <Topo />
       
       <View style={styles.painelAcoes} >
 
 
-      <Button title='Pedra' onPress={ () => { this.jokenpo('pedra') }} />
-      <Button title='Papel' onPress={ () => { this.jokenpo('papel') }} />
-      <Button title='Tesoura' onPress={ () => { this.jokenpo('tesoura') }} />
-
-      <Button title='Zerar Placar' onPress={ () => { this.resetar() }} />
+      <Button title='Pedra' onPress={() => { this.jokenpo('pedra'); }} />
+      <Button title='Papel' onPress={() => { this.jokenpo('papel'); }} />
+      <Button title='Tesoura' onPress={() => { this.jokenpo('tesoura'); }} />
+      <Button title='Zerar Placar' onPress={() => { this.resetar(); }} />
       
       </View>
 
@@ -189,22 +130,21 @@ class PPT extends Component {
 
       <View style={styles.placarFormat} >
 
-      <Icone escolha={this.state.escolhaUsuario}    jogador='Você'></Icone>
-      <Icone escolha={this.state.escolhaComputador} jogador='Computador'></Icone>
+      <Icone escolha={this.state.escolhaUsuario} jogador='Você' />
+      <Icone escolha={this.state.escolhaComputador} jogador='Computador' />
 
-      </View>
+      </View></View>
       
-      <Text>{'\n'}</Text></View>
+      <Text>{'\n'}</Text>
 
       <View style={styles.placar}>
       <View style={styles.placarFormat} >
-      <Text>Placar Você</Text>
-      <Text>Placar Computador </Text>
-      
+        <Text>Placar Você</Text>
+        <Text>Placar Computador </Text>
       </View>
       <View style={styles.placarNumeros} >
-      <Text >   {this.state.placarUsuario}   </Text>
-      <Text >   {this.state.placarComputador}</Text>
+        <Text> {this.state.placarUsuario} </Text>
+        <Text> {this.state.placarComputador} </Text>
       </View>
       </View>
       </View>
@@ -222,71 +162,60 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+
   placar: {
     paddingVertical: 30,
     backgroundColor: '#F5FCFF',
     marginTop: 50,
   },
+
   btnEscolha: {
-    width:90,
+    width: 90,
   },
 
   painelAcoes: {
-
     flexDirection: 'row',
     justifyContent: 'space-between'
-
   },
 
-  placarFormat:{
-
-  flexDirection: 'row',
-  alignItems: 'center',
-  paddingVertical:10,
-  paddingHorizontal:50,
-  justifyContent: 'space-between',
-
-
-  },
-
-  placarNumeros:{
-
-  flexDirection: 'row',
-  alignItems: 'center',
-  paddingVertical:10,
-  paddingLeft:80,
-  paddingRight:110,
-  justifyContent: 'space-between',
+  placarFormat: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 50,
+    justifyContent: 'space-between',
 
 
   },
 
-  jogador:{
-  
-   //alignItems: 'center',
-   paddingTop: 8,
-   fontSize: 16,
-   //paddingRight:50,
-   textAlign: 'center',
-   //paddingLeft:30,
-
+  placarNumeros: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingLeft: 80,
+    paddingRight: 110,
+    justifyContent: 'space-between',
   },
 
+  jogador: {
+     //alignItems: 'center',
+     paddingTop: 8,
+     fontSize: 16,
+     //paddingRight:50,
+     textAlign: 'center',
+     //paddingLeft:30,
+  },
 
-  placarUsuario:{
-
+  placarUsuario: {
     fontSize: 30,
-    fontWeight: 25,
     color: 'red',
     //fontStyle:'italic',
     fontWeight: '300',
     textAlign: 'center',
     alignItems: 'stretch',
-
   },
 
-  placarComputador:{
-
+  placarComputador: {
     fontSize: 100,
     color: 'red',
     //fontStyle:'italic',
@@ -295,20 +224,14 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
 
-  barraTop:{
-
+  barraTop: {
     backgroundColor: '#31a0eb'
   },
 
-  status:{
-
+  status: {
     paddingVertical: 5,
     paddingHorizontal: 50,
-
   }
 });
-
-
-
 
 AppRegistry.registerComponent('PPT', () => PPT);
