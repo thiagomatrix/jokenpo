@@ -18,89 +18,11 @@ import {
   View
 } from 'react-native';
 
+import Topo from './src/components/topo';
+
+import Icone from './src/components/icone';
+
 //import FontAwesome, { Icons } from 'react-native-fontawesome';
-
-
-class Topo extends Component {
-
-  render(){
-
-  return(
-
-    <View>
-
-    <Image source={require('./imgs/jokenpo.png')} />
-
-    </View>
-  
-    );
-  
-  }
-
-} 
-
-
-class Icone extends Component{
-
-  render(){
-
-      //this.props.escolha
-      //this.props.jogador
-
-
-     if(this.props.escolha == 'pedra'){
-
-      return(
-
-      <View>
-      <Text style={styles.jogador}>{this.props.jogador}</Text>
-      <Image source={require('./imgs/pedra.png')} />      
-      </View>
-
-
-      );
-
-      } else if (this.props.escolha == 'papel'){
-
-        return(
-
-      <View>
-      <Text style={styles.jogador}>{this.props.jogador}</Text>
-      <Image source={ require('./imgs/papel.png')} />      
-      </View>
-
-
-      );
-
-      } else if (this.props.escolha == 'tesoura'){
-
-       return(
-
-      <View>
-      <Text style={styles.jogador}>{this.props.jogador}</Text>
-      <Image source={ require('./imgs/tesoura.png')} />      
-      </View>
-
-      );
-
-      } else {
-
-        return(
-
-      <View>
-      <Text style={{paddingVertical:44}}></Text>
-          
-      </View>
-
-      );
-
-      }
-
-    
-      }
-      
-  }
-
 
 
 
